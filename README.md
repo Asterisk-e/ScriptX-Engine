@@ -1,2 +1,2 @@
 # ScriptX-Engine
-ScriptZ is a small scripting engine
+ScriptX is a small scripting engine
