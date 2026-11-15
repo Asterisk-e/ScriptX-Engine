@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#6750a4">
 <title>ScriptX-Engine</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" href="style.css">
 </head>
 <body data-p="home">
@@ -17,6 +18,9 @@
 <main id="main"></main>
 <a class="fab st" href="#/new" data-go="#/new" id="fab"></a>
 <div id="toast" role="status"></div>
-<script src="app.js"></script>
+<script>
+/* Loads an installed OTA update if there is one; falls back to the built-in app.js if it fails to start. */
+(function(){try{var o=JSON.parse(localStorage.getItem('scriptx.ota')||'null');if(o&&o.app){var s=document.createElement('style');s.textContent=o.css;document.head.appendChild(s);document.write('<script>'+o.app.replace(/<\/script/g,'<\\/script')+'<\/script>');setTimeout(function(){if(!window.__sxOK){localStorage.removeItem('scriptx.ota');location.reload()}},4000);return}}catch(e){}document.write('<script src="app.js"><\/script>')})();
+</script>
 </body>
 </html>
