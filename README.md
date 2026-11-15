@@ -19,12 +19,6 @@ A code editor that runs entirely in your browser, with a GitHub-style repository
 | `app.js` | Editor, storage, routing and preview logic |
 | `README.md` | This file |
 
-## Host it on GitHub Pages
-
-1. Put all four files in the root of a repository.
-2. Open **Settings → Pages**.
-3. Choose the `main` branch and the `/ (root)` folder, then save.
-
 ## Notes
 
 - Data is stored in your browser (IndexedDB). It is not synced to GitHub.
