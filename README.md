@@ -11,8 +11,18 @@ ScriptX-Engine is a code editor that runs entirely in your browser. It combines 
 - **Preview.** Runs your `index.html` with its linked CSS, JavaScript and images. Choose a device (Pixel 7, small phone, tablet or desktop), rotate it, switch between your HTML pages (links between pages work), reload, open it in a new tab, read the console and run JavaScript from the console box.
 - **Search.** Find text across every file in a repository.
 - **Command palette.** Press Ctrl+K (or Cmd+K) to jump to any page, repository or file.
-- **Setup screens.** A first-run welcome flow with Android 13 shapes lets you pick a name, colours and editor options. You can replay it from Settings → About.
+- **Setup screens.** An 11-step first-run flow with moving Android 13 shapes: name, colours and theme, interface size, animations and haptics, editor and typing options, repository defaults, preview device, persistent storage, then a short "setting things up" screen. Replay it from Settings → About.
+- **Templates.** New repositories start blank by default. You can instead pick Web starter, Android-style app, Landing page, To-do app, Tap game, Python script or Documentation, and also choose topics, a README, a .gitignore, an MIT license and the default branch name.
+- **Quick settings.** Tap your avatar for Android-style tiles (dark theme, autosave, live preview, autocomplete, word wrap, haptics, animations).
+- **Motion.** Page transitions, staggered lists, ripples on every tap, animated dialogs and switches, and an update screen with progress. Turn it all off with Settings → Display & theme → Animations.
 - **Settings.** Laid out like Android settings: Profile, Display & theme, Editor, Preview, Repositories, Storage, System update and About.
+
+## Preview on a real device
+
+Open **Settings → Connected devices** (or the Devices button in the Preview tab).
+
+- **Live preview.** Press *Start connection*, open the link on your phone, copy the code it shows and paste it back on your computer. The phone then mirrors the Preview tab and updates as you type. Console messages from the phone show up in your console, and links between pages work. Files go directly from your computer to the phone over WebRTC; Google's public STUN server is only used to help the two devices find each other, so both need an internet connection.
+- **Snapshot link.** Creates a link that contains a copy of your repository's text files. Open it on any device. It does not update, and images are not included.
 
 ## Storage
 
@@ -22,13 +32,19 @@ Nothing is sent to a server. Clearing your browser data removes your repositorie
 
 ## System update (OTA)
 
-Open **Settings → System update**, enter your GitHub repository as `owner/name` and press **Check for update**. ScriptX-Engine asks the GitHub API for the latest commits and the file list, then shows:
+Open **Settings → System update** and press **Check for update**. Updates are **locked to one source, `Asterisk-e/ScriptX-Engine`**, and cannot be pointed anywhere else. ScriptX-Engine asks the GitHub API for the five newest commits and the file list, then shows:
 
-- the five newest commits,
-- any new pages (files) that were added since your last check,
+- the latest commits,
+- any new pages (files) added since your last check,
 - an **Install update** button when the newest commit is not the one you are running.
 
-Installing downloads `app.js` and `style.css` from that commit and stores them on your device. The next start loads them instead of the built-in files. If the new version fails to start, the built-in version loads again automatically, and **Use built-in version** reverts manually. The repository must be public, and GitHub allows about 60 unauthenticated requests per hour.
+Installing shows an animated progress screen while it downloads `app.js` and `style.css` from that exact commit, checks them, stores them and restarts. Only a full 40-character commit ID is accepted, and a SHA-256 checksum of the installed files is shown on the update page. If a new version fails to start, the built-in version loads again automatically, and **Use built-in version** reverts manually. GitHub allows about 60 unauthenticated requests per hour.
+
+If you fork this project, change `OTA_REPO` near the top of the update code in `app.js` to your own repository.
+
+## Settings
+
+Profile, Display & theme (colours, fonts, line height, animations), Editor (autocomplete options, autosave delay, tab size, trim and final newline), Preview, Connected devices, Repositories (default template, branch, visibility), Sound & feedback, Accessibility (interface size, high contrast), Privacy & security, Backup & restore, Storage, System update and About. Tap the version in About seven times to unlock **Developer options** (layout bounds and touch indicators in the preview), just like on Android.
 
 ## Files in this project
 
